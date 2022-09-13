@@ -41,7 +41,7 @@ defineProps({
                                 >
                                     <td>{{ community.name }}</td>
                                     <td>{{ community.description }}</td>
-                                    <td>
+                                    <td class="flex gap-4">
                                         <Link
                                             :href="
                                                 route(
@@ -51,6 +51,19 @@ defineProps({
                                             "
                                             class=""
                                             >edit</Link
+                                        >
+                                        <Link
+                                            :href="
+                                                route(
+                                                    'communities.destroy',
+                                                    community.id
+                                                )
+                                            "
+                                            method="delete"
+                                            as="button"
+                                            type="button"
+                                            class="text-red-400"
+                                            >delete</Link
                                         >
                                     </td>
                                 </tr>
