@@ -41,7 +41,18 @@ defineProps({
                                 >
                                     <td>{{ community.name }}</td>
                                     <td>{{ community.description }}</td>
-                                    <td>Icon Button</td>
+                                    <td>
+                                        <Link
+                                            :href="
+                                                route(
+                                                    'communities.edit',
+                                                    community.id
+                                                )
+                                            "
+                                            class=""
+                                            >edit</Link
+                                        >
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
