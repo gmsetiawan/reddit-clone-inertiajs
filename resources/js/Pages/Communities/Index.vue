@@ -1,6 +1,7 @@
 <script setup>
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import Pagination from "@/Components/Pagination.vue";
 
 defineProps({
     communities: Object,
@@ -36,7 +37,7 @@ defineProps({
                             </thead>
                             <tbody>
                                 <tr
-                                    v-for="community in communities"
+                                    v-for="community in communities.data"
                                     :key="community.id"
                                 >
                                     <td>{{ community.name }}</td>
@@ -69,6 +70,9 @@ defineProps({
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="m-2">
+                        <Pagination :links="communities.links" />
                     </div>
                 </div>
             </div>
