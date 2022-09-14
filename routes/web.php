@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Backend\CommunityController;
+use App\Http\Controllers\Backend\CommunityPostController;
+use App\Http\Controllers\Frontend\CommunityController as FrontendCommunityController;
+use App\Http\Controllers\Frontend\PostController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,12 +28,16 @@ Route::get('/', function () {
     ]);
 });
 
-Route::group(['middleware' => ['auth', 'verified']], function() {
+Route::get('/r/{slug}', [FrontendCommunityController::class, 'show'])->name('frontend.community.show');
+Route::get('/r/{community_slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.community.posts.show');
+
+Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::resource('/communities', CommunityController::class);
+    Route::resource('/dashboard/communities', CommunityController::class);
+    Route::resource('/dashboard/communities.posts', CommunityPostController::class);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -27,4 +27,19 @@ class Post extends Model
             ]
         ];
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    /**
+     * Get the user that owns the Post
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
