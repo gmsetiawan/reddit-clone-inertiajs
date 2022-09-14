@@ -40,7 +40,18 @@ defineProps({
                                     v-for="community in communities.data"
                                     :key="community.id"
                                 >
-                                    <td>{{ community.name }}</td>
+                                    <td>
+                                        <Link
+                                            :href="
+                                                route(
+                                                    'frontend.community.show',
+                                                    community.slug
+                                                )
+                                            "
+                                        >
+                                            {{ community.name }}
+                                        </Link>
+                                    </td>
                                     <td>{{ community.description }}</td>
                                     <td class="flex gap-4">
                                         <Link
