@@ -1,4 +1,5 @@
 <template>
+    <Head title="Communities" />
     <guest-layout>
         <template #header>
             <div class="flex justify-between m-2 p-2">
@@ -37,7 +38,7 @@
 
 <script setup>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Head, Link } from "@inertiajs/inertia-vue3";
 import PostCard from "@/Components/PostCard.vue";
 import Pagination from "@/Components/Pagination.vue";
 

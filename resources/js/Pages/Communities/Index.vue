@@ -13,7 +13,7 @@ defineProps({
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Communities
+                All Communities
             </h2>
         </template>
         <div class="py-12">
@@ -47,7 +47,7 @@ defineProps({
                                             :href="
                                                 route(
                                                     'communities.edit',
-                                                    community.id
+                                                    community.slug
                                                 )
                                             "
                                             class=""
@@ -57,7 +57,7 @@ defineProps({
                                             :href="
                                                 route(
                                                     'communities.destroy',
-                                                    community.id
+                                                    community.slug
                                                 )
                                             "
                                             method="delete"

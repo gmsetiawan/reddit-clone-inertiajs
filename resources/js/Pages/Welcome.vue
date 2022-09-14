@@ -21,9 +21,9 @@ defineProps({
         >
             <Link
                 v-if="$page.props.auth.user"
-                :href="route('dashboard')"
+                :href="route('communities.index')"
                 class="text-sm text-gray-700 dark:text-gray-500 underline"
-                >Dashboard</Link
+                >Communities</Link
             >
 
             <template v-else>
