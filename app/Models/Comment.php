@@ -14,4 +14,24 @@ class Comment extends Model
         'post_id',
         'content'
     ];
+
+    /**
+     * Get the post that owns the Comment
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
+
+    /**
+     * Get the user that owns the Comment
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

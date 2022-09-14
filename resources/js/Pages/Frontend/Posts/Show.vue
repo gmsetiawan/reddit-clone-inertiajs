@@ -60,6 +60,47 @@
                             {{ post.data.url }}
                         </Link>
                     </div>
+                    <div v-if="$page.props.auth.auth_check">
+                        <form @submit.prevent="submit">
+                            <div class="mt-2">
+                                <textarea
+                                    v-model="form.content"
+                                    id="comment"
+                                    rows="3"
+                                    class="block w-full resize-none"
+                                    placeholder="Add comment..."
+                                />
+                            </div>
+                            <div class="mt-2">
+                                <button
+                                    class="px-4 py-2 bg-blue-400 hover:bg-blue-600 text-white rounded text-sm"
+                                >
+                                    Add Comment
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div>
+                        <ul
+                            role="list"
+                            class="divide-y divide-gray-200 m-2 p-2"
+                        >
+                            <li
+                                v-for="(comment, index) in post.data.comments"
+                                :key="index"
+                                class="py-4 flex flex-col"
+                            >
+                                <div class="text-sm text-gray-400">
+                                    Commented by
+                                    <span class="font-semibold">{{
+                                        comment.username
+                                    }}</span>
+                                </div>
+                                <div>{{ comment.content }}</div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="w-full md:w-4/12">
@@ -73,12 +114,31 @@
 
 <script setup>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link, useForm } from "@inertiajs/inertia-vue3";
 import PostCard from "@/Components/PostCard.vue";
 import Pagination from "@/Components/Pagination.vue";
 
-defineProps({
+const props = defineProps({
     community: Object,
     post: Object,
+    // posts: Object,
+    // can_delete: Boolean,
+    // can_update: Boolean,
 });
+
+const form = useForm({
+    content: "",
+});
+
+const submit = () => {
+    form.post(
+        route("frontend.posts.comment", [
+            props.community.slug,
+            props.post.data.slug,
+        ]),
+        {
+            onSuccess: () => form.reset("content"),
+        }
+    );
+};
 </script>
