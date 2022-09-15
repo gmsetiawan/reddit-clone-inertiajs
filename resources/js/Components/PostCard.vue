@@ -2,22 +2,31 @@
     <div
         class="mt-4 max-w-4xl flex bg-white rounded-lg border border-gray-200 shadow-md"
     >
-        <div class="mr-3">
-            <PostVote />
+        <div class="">
+            <PostVote :post="post" />
         </div>
         <div class="my-2 w-full">
             <div class="flex text-sm">
-                <Link>r/{{ community }} </Link>
+                <Link :href="route('frontend.community.show', community)">
+                    r/{{ community }}
+                </Link>
                 <div class="flex ml-2">
                     Posted by
                     <span class="font-semibold mx-1">{{ post.username }}</span>
                     {{ post.created_at }}
                 </div>
             </div>
-            <Link>
-                <h5 class="text-2xl font-bold tracking-tight">
+            <Link
+                :href="
+                    route('frontend.community.posts.show', [
+                        community,
+                        post.slug,
+                    ])
+                "
+            >
+                <h1 class="text-xl font-bold tracking-tight">
                     {{ post.title }}
-                </h5>
+                </h1>
             </Link>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                 {{ post.description }}
