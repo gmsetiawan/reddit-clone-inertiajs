@@ -1,4 +1,4 @@
-<img width="1680" alt="Screen Shot 2022-09-15 at 23 03 57" src="https://user-images.githubusercontent.com/8079924/190452752-8bcafbc0-b3df-4836-a424-0f75b6c90092.png">
+<img width="1680" alt="Screen Shot 2022-09-18 at 13 57 16" src="https://user-images.githubusercontent.com/8079924/190889768-cd9e0de4-d3f9-4cb3-9cb0-0df6699b203f.png">
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
