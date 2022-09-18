@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CommunityPostResource;
 use App\Http\Resources\CommunityResource;
 use App\Models\Community;
+use App\Models\CommunityFollower;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -26,6 +27,9 @@ class CommunityController extends Controller
 
         $communities = CommunityResource::collection(Community::withCount('posts')->latest()->take(4)->get());
 
-        return Inertia::render('Frontend/Communities/Show', compact('community', 'posts', 'communities'));
+        $isFollowed = CommunityFollower::where('community_id', $community->id)->where('user_id', auth()->id())->count();
+
+
+        return Inertia::render('Frontend/Communities/Show', compact('community', 'posts', 'communities', 'isFollowed'));
     }
 }
